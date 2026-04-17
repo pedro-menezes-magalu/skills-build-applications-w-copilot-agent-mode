@@ -27,9 +27,12 @@ DEBUG = True
 
 
 import os
-ALLOWED_HOSTS = ['*', 'localhost', '127.0.0.1']
-if os.environ.get('CODESPACE_NAME'):
-    ALLOWED_HOSTS.append(f"{os.environ.get('CODESPACE_NAME')}-8000.app.github.dev")
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+codespace = os.environ.get('CODESPACE_NAME')
+if codespace:
+    ALLOWED_HOSTS.append(f"{codespace}-8000.app.github.dev")
+else:
+    ALLOWED_HOSTS.append('*')
 
 
 # Application definition
